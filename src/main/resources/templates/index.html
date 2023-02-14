@@ -17,10 +17,10 @@
             </div>
         </div>
 
-        <form>
+        <form action="#" th:action="@{/}" th:object="${user}" method="post">
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Enter Username">
+                <input type="text" class="form-control" id="nameInput" placeholder="Enter Username" th:field="*{username}">
             </div>
             <button type="submit" class="btn btn-primary">Enter Chat</button>
         </form>
