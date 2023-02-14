@@ -3,11 +3,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/chat-window.css}" rel="stylesheet">
 </head>
 
 <body>
-    <p th:text="'username is : ' + ${user.username}" />
+    <div class="container" style="padding-top: 10px;">
+
+        <div class="alert alert-primary" role="alert">
+            <h4 th:text="'Welcome : ' + ${user.username}" />
+        </div>
+
+        <br />
+
+        <div class="card mx-auto" style="width: 50rem; height: 40rem;">
+            chat window
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">Send message</button>
+        </div>
+
+    </div>
 </body>
 
 </html>
