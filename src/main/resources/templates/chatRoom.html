@@ -3,28 +3,41 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/css/chat-window.css}" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/app.js}"></script>
 </head>
 
 <body>
+    <noscript>
+        <h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+            enabled. Please enable
+            Javascript and reload this page!</h2>
+    </noscript>
     <div class="container" style="padding-top: 10px;">
 
         <div class="alert alert-primary" role="alert">
             <h4 th:text="'Welcome : ' + ${user.username}" />
+            <input type="hidden" id="user" th:value="${user.username}"/>
         </div>
 
         <br />
 
-        <div class="card mx-auto" style="width: 50rem; height: 40rem;">
-            chat window
+        <div id="chatWindow" class="card mx-auto chat-window" style="width: 50rem; height: 40rem; overflow-y: auto">
+           
+                <ul id="chat"></ul>
+            
         </div>
 
         <br />
 
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <button type="submit" class="btn btn-primary">Send message</button>
+            <label for="messageBody">enter message below</label>
+            <textarea class="form-control" id="messageBody" rows="3"></textarea>
+            <br>
+            <button onclick="sendMessage(document.getElementById('user').value, document.getElementById('messageBody').value)" type="submit"
+                class="btn btn-primary">Send message</button>
         </div>
 
     </div>
