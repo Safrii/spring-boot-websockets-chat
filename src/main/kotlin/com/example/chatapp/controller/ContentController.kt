@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller
 
 @Controller
 class ContentController {
-
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
     fun content(message: Message): Content {
-        Thread.sleep(1000)
         val content = Content()
         content.content = message.message
         return content
