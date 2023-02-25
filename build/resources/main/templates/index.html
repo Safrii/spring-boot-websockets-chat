@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Welcom to chat App</h1>
+                <p class="lead">Enter your username and enter chat room</p>
+            </div>
+        </div>
+
+        <form action="#" th:action="@{/}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Enter Username" th:field="*{username}">
+            </div>
+            <button type="submit" class="btn btn-primary">Enter Chat</button>
+        </form>
+    </div>
+</body>
+
+</html>
