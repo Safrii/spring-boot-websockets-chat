@@ -1,19 +1,20 @@
 var stompClient = null
 
 function connect() {
-    var socket = new SockJS('/gs-guide-websocket');
+    var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/app', function () {
-            console.log("subscribed to chat")
+        stompClient.subscribe('/topic/messages', function (messageOutput) {
+            console.log("u callbacku sam")
+            showMessages("test", JSON.parse(messageOutput))
         });
     });
 }
 
 function sendMessage(user, message) {
-    stompClient.send("app/send", {}, JSON.stringify({ 'message': message }))
-    showMessages(user, message)
+    stompClient.send("app/chat", {}, JSON.stringify({ 'message': message }))
+    
 }
 
 function showMessages(user, message) {
